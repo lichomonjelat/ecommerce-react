@@ -1,13 +1,11 @@
-import { MDBIcon } from 'mdbreact';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CartWidget from './CartWidget/CartWidget';
 import './NavBar.scss';
 
-class NavBar extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-    render() {
+function NavBar(){
+        
+    
         return (
             <div className="navContainer">
                 <div className="nav-logo">
@@ -22,14 +20,9 @@ class NavBar extends React.Component {
                     <Link to="#">Sucursales</Link>
                     <Link to="#">Contacto</Link>
                 </div>
-                <div className="cart">
-                    <div>
-                        <span>0</span>
-                       
-                    </div>
-                </div>
+                <CartWidget/>
             </div>
         )
-    }
+    
 }
 export default NavBar;
