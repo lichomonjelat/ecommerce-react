@@ -27,13 +27,7 @@ function ItemListContainer(props){
             product_price:510,
             product_photo:"https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP726/SP726-iphone6s-gray-select-2015.png"
         },
-        {
-            id:4,
-            product_title:"IPhone X",
-            product_description:"128gb, Spacegray",
-            product_price:600,
-            product_photo:"https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP726/SP726-iphone6s-gray-select-2015.png"
-        }
+        
     ]
     
     return(
@@ -44,6 +38,7 @@ function ItemListContainer(props){
                     
                     <div key={item.id} className="product-show">
                         <Product 
+                            id={item.id}
                             product_title={item.product_title}
                             product_description={item.product_description}
                             product_price={item.product_price}

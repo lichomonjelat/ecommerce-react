@@ -1,12 +1,19 @@
 import React from 'react'
 import Counter from './Counter'
 import './Product.scss'
+import IconButton from '@material-ui/core/IconButton';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import { Link } from 'react-router-dom';
+import ItemDetailContainer from '../ItemDetailContainer/ItemDetailContainer';
 
 function Product(props) {
     return (
         <div className="product">
             <div className="product-photo">
-                <img src={props.product_photo} alt="product" />
+                <img src={props.product_photo} alt="product" className="image"/>
+                <div className="middle">
+                <Link to={`/detail/${props.id}`}>Ver más</Link>
+                </div>
             </div>
             <div className="product-info">
                 <div>
@@ -23,14 +30,14 @@ function Product(props) {
                 </div>
             </div>
             <div className="actions">
-                <div className="counter">
-                    <Counter/>
-                </div>
-                <div className="addcart">
-                    <button>Añadir al carrito</button>
-                </div>
+
                 <div className="see-more">
-                    <button>Mas informacion</button>
+                    <IconButton color="primary" aria-label="add to shopping cart">
+                        <AddShoppingCartIcon />
+                    </IconButton>
+                    <div className="counter">
+                        <Counter />
+                    </div>
                 </div>
             </div>
         </div>
