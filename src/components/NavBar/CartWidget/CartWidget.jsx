@@ -1,18 +1,19 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import './CartWidget.scss';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Cart from './Cart';
+import CartContext from '../../../services/context/CartContext'
 
 function CartWidget() {
 
     const [showCart, setShowCart] = useState(false);
  
-    const [qty, setQty] = useState(0)
+    const [cart, setCart] = useContext(CartContext)
 
     return (
         <>
         <div className="cart" onClick={()=>setShowCart(true)}>
-            <span>{qty}</span>
+            <span>{cart.qty}</span>
             <ShoppingCartIcon/>
         </div>
         <Cart show={showCart} onClose={()=>setShowCart(false)}/>

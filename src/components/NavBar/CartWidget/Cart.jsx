@@ -1,10 +1,17 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import './CartWidget.scss'
-
+import CartContext from '../../../services/context/CartContext'
 function Cart(props){
+
+    const [cart, setCart] = useContext(CartContext)
+
     return( 
         <div className={`cart-side ${props.show ? "cart-show" : ""}`} onClick={props.onClose}>
-            <h2>Muchos productos por aca</h2>
+            {/*
+                cart.items.map((item) =>
+                <h3>{item}</h3>
+                )
+            */}
         </div>
     )
 }
