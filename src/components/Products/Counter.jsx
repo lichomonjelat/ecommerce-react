@@ -6,8 +6,6 @@ function Counter(props) {
 
     const [cart, setCart] = useContext(CartContext)
 
-    
-
     const onResta = () => {
         if (count > 1) {
             setCount(count - 1);
@@ -19,19 +17,20 @@ function Counter(props) {
     const onSuma = () => {
         setCount(count + 1);
     }
-    useEffect(() => {
-        
-    }, [count]);
+
     return (
-        <div className="counter">
-            <button onClick={onResta}
-                disabled={count === 0 ? "disabled" : ""}
-            >-</button>
-            <input disabled type="number" value={count} />
-            <button onClick={onSuma}
-                disabled={count > props.stock ? "disabled" : ""}
-            >+</button>
-        </div>
+        <>
+            <div className="counter">
+                <button onClick={onResta}
+                    disabled={count === 0 ? "disabled" : ""}
+                >-</button>
+                <input disabled type="number" value={count} />
+                <button onClick={onSuma}
+                    disabled={count > props.stock ? "disabled" : ""}
+                >+</button>
+            </div>
+            <button onClick={props.onAdd(count)}>Comprar</button>
+        </>
     )
 }
 
