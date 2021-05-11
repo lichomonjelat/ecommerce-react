@@ -6,6 +6,8 @@ import Home from './pages/Home/Home';
 import Footer from './components/Footer/Footer';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import CartContext from './services/context/CartContext'
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import Category from './components/ItemCategory/Category';
 
 function App() {
   
@@ -24,7 +26,9 @@ function App() {
           <Route path='/detail/:id?'>
             <ItemDetailContainer />
           </Route>
-          <Route></Route>
+          <Route path='/products/:category?'>
+            <Category/>
+          </Route>
         </Switch>
         <Footer />
       </Router>

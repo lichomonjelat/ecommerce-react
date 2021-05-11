@@ -29,7 +29,7 @@ function Counter(props) {
                     disabled={count > props.stock ? "disabled" : ""}
                 >+</button>
             </div>
-            <button onClick={props.onAdd(count)}>Comprar</button>
+            <button>Comprar</button>
         </>
     )
 }

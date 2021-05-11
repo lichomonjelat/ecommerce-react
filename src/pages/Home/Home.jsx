@@ -2,7 +2,7 @@ import React from 'react';
 import Products from '../Products/Products';
 import './Home.scss'
 import CarouselHome from '../../components/Carousel/Carousel'
-import ItemListContainer from '../ItemListContainer/ItemListContainer';
+import ItemListContainer from '../../components/ItemListContainer/ItemListContainer';
 
 function Home(props) {
 
