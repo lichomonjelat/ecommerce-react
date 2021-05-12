@@ -2,13 +2,13 @@ import React, {useState, useContext} from 'react';
 import './CartWidget.scss';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Cart from './Cart';
-import CartContext from '../../../services/context/CartContext'
+import {CartContext} from '../../../services/context/CartContext'
 
 function CartWidget() {
 
     const [showCart, setShowCart] = useState(false);
  
-    const [cart, setCart] = useContext(CartContext)
+    const {cart} = useContext(CartContext)
 
     return (
         <>

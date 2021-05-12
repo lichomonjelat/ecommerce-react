@@ -1,11 +1,10 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './counter.scss'
-import CartContext from '../../services/context/CartContext'
+
 function Counter(props) {
     const [count, setCount] = useState(1)
 
-    const [cart, setCart] = useContext(CartContext)
-
+    
     const onResta = () => {
         if (count > 1) {
             setCount(count - 1);
@@ -29,7 +28,7 @@ function Counter(props) {
                     disabled={count > props.stock ? "disabled" : ""}
                 >+</button>
             </div>
-            <button>Comprar</button>
+            <button onClick={()=> props.onAdd(count)}>Comprar</button>
         </>
     )
 }

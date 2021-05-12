@@ -1,26 +1,28 @@
-import React,{useContext, useState, useEffect} from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import './ItemDetail.scss'
-import CartContext from '../../services/context/CartContext'
+import { CartContext } from '../../services/context/CartContext'
 import Counter from '../Products/Counter'
 import { Link } from 'react-router-dom';
 
-const ItemDetail = ({data}) => {
+const ItemDetail = ({ data }) => {
 
-    
-    const [cart, setCart] = useContext(CartContext)
-    const [qty, setQty] = useState()
 
-    const onAdd = (count) =>{
-        setCart({
-            qty: count,
-            items: ["aca hay un product"]
+    const { addToCart } = useContext(CartContext)
+
+    const onAdd = (count) => {
+        addToCart({
+            id: data.id,
+            item: {
+                count: count,
+                data: data
+            }
         })
     }
 
     return (
         <div key={data.id} className="prod-container">
             <div className="product-image">
-                <img src={data.product_photo}/>
+                <img src={data.product_photo} />
             </div>
             <div className="actions">
                 <div className="title">
@@ -33,10 +35,9 @@ const ItemDetail = ({data}) => {
                     <h4>${data.product_price}</h4>
                 </div>
                 <div className="buy">
-                    <Counter onAdd={onAdd} stock={6} setQty={setQty}/>
-                    
+                    <Counter onAdd={onAdd} stock={6} />
                 </div>
-                {cart.product ? <Link to="/cart">Terminar Compra</Link> :""}
+
             </div>
         </div>
     );

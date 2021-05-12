@@ -13,7 +13,6 @@ function ItemListContainer(props) {
             .then(
                 data => setItems(data)
             );
-        console.log(items)
     }, []);
     return (
         <div>
