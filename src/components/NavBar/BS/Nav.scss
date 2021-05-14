@@ -1,0 +1,127 @@
+.nav-logo {
+    a {
+        text-decoration: none;
+        color: black;
+        margin: 0;
+    }
+    h2 {
+        margin: 0;
+        font-family: hind;
+        font-weight: 500;
+        span {
+            font-size: 19px;
+            font-family: poppins;
+            font-weight: 200;
+            color: #f12e2e;
+        }
+    }
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-left: 1em;
+}
+
+.navbar-brand img {
+    height: 1.2rem;
+}
+
+.burger-menu {
+    display: inline-block;
+    width: 1.25rem;
+    height: 1rem;
+    vertical-align: middle;
+    content: "";
+    background: 50%/100% 100% no-repeat;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.bg-nav {
+    background-color: #ffff;
+    box-shadow: 0px 3px 6px #00000029 !important;
+    z-index: 10;
+    height: 3.75rem;
+}
+
+.nav {
+    a {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.12rem;
+        font-weight: 400;
+    }
+}
+
+.collapse:not(.show) {
+    display: block;
+}
+
+.show {
+    display: block !important;
+    transition: all 1s;
+}
+
+@media(max-width:768px) {
+    .not-show {
+        display: none;
+        top: 0;
+        left: 0;
+        right: 0;
+        position: absolute;
+        height: 100vh;
+        width: 100vw;
+        transition: all 1s;
+    }
+    .navbar-brand img {
+        height: 1rem;
+    }
+    .blur-bg {
+        top: 0;
+        left: 0;
+        right: 0;
+        position: absolute;
+        background-color: #00000147;
+        width: 100vw;
+        height: 100vh;
+    }
+    .nav {
+        display: flex;
+        padding-bottom: 21rem;
+        justify-content: center;
+        align-items: center;
+        right: 0;
+        position: absolute;
+        width: 60%;
+        background-color: white;
+        height: 100%;
+        box-shadow: 0px 10px 20px #00000029;
+        a {
+            width: 60%;
+            text-align: left;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+    }
+    .cross {
+        position: absolute;
+        right: 30px;
+        top: 25px;
+        background-size: cover;
+        display: inline-block;
+        width: 1rem;
+        height: 1rem;
+        vertical-align: middle;
+        content: "";
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        cursor: pointer;
+    }
+}
+
+@media(max-width:760px) {
+    .not-show {
+        transition: all ease-in-out 0.3s;
+    }
+}

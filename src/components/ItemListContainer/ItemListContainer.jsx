@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import Product from '../Products/Product';
 import './ItemListContainer.scss'
-import { getProducts } from '../../services/products'
+import { getFeatured } from '../../services/products'
 
 
-function ItemListContainer(props) {
+function ItemListContainer() {
 
     const [items, setItems] = useState([])
 
     useEffect(() => {
-        getProducts()
+        getFeatured()
             .then(
                 data => setItems(data)
             );
@@ -18,6 +18,7 @@ function ItemListContainer(props) {
         <div>
             {
                 items.length ?
+                    <div className="container">
                     <div className="product-container">
                         {
 
@@ -26,6 +27,8 @@ function ItemListContainer(props) {
                                 <div key={item.id} className="product-show">
                                     <Product
                                         id={item.id}
+                                        new={item.new}
+                                        product_brand={item.product_brand}
                                         product_title={item.product_title}
                                         product_description={item.product_description}
                                         product_price={item.product_price}
@@ -38,12 +41,14 @@ function ItemListContainer(props) {
                             ))
 
                         }
+                    </div>
                     </div> :
                     <div>
                         <h1>Cargando...</h1>
                     </div>
             }
         </div>
+        
     )
 };
 

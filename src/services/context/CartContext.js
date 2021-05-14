@@ -25,19 +25,19 @@ export default function CartProvider({ children }) {
     function addToCart(data) {
         if (isInCart(data.id)) {
             var prodIndex = cart.findIndex((obj => obj.id == data.id));
-            cart[prodIndex].item.count = cart[prodIndex].item.count + data.item.count;
-            console.log(data)
+            const updated  = cart[prodIndex].item.count + data.items.count
+            setCart([...cart, updated])
         }
         else {
             setCart([...cart, data])
         }
     }
-    function removeItem(data) {
-        var prodIndex = cart.findIndex((obj => obj.id == data.id));
-        console.log(cart[prodIndex])
+    function removeItem(id) {
+        const newToCart = cart.filter((item) => item.id !== id)
+        setCart(newToCart)
     }
     function emptyCart() {
-
+        setCart([])
     }
 
     return (

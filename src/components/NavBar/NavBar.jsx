@@ -16,9 +16,9 @@ function NavBar(){
                     </Link>
                 </div>
                 <div className="nav-links">
-                    <Link to="/products">Productos</Link>
-                    <Link to="#">Sucursales</Link>
-                    <Link to="#">Contacto</Link>
+                    <Link to="/products">PRODUCTOS</Link>
+                    <Link to="#">SUCURSALES</Link>
+                    <Link to="#">CONTACTO</Link>
                 </div>
                 <CartWidget/>
             </div>

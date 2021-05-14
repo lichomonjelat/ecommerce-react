@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import NavBar from './components/NavBar/NavBar'
+import Nav from './components/NavBar/BS/Nav'
 import Home from './pages/Home/Home';
 import Footer from './components/Footer/Footer';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
@@ -14,7 +14,7 @@ function App() {
   return (
     <CartProvider>
       <Router>
-        <NavBar />
+        <Nav />
         <Switch>
           <Route exact path="/">
             <Home />

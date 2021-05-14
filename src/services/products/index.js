@@ -7,6 +7,18 @@ export function getProducts() {
         .then(snapshot => {
             return snapshot.docs.map(doc => ({...doc.data(), id: doc.id }))
         })
+};
+export function getFeatured() {
+    return postCollection.where("featured", "==", true).get()
+        .then(snapshot => {
+            return snapshot.docs.map(doc => ({...doc.data(), id: doc.id }))
+        })
+}
+export function getCategory(category) {
+    return postCollection.where("category", "==", category).get()
+        .then(snapshot => {
+            return snapshot.docs.map(doc => ({...doc.data(), id: doc.id }))
+        })
 }
 
 export function getDetail(id) {
