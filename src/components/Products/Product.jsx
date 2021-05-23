@@ -28,7 +28,7 @@ function Product(props) {
                     <h3>{props.product_title}</h3>
                     {
 
-                        props.new ?
+                        props.new =="true" ?
                             <div className="new">NUEVO</div>
                             : ""
                     }

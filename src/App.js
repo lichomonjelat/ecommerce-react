@@ -8,6 +8,7 @@ import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailCont
 import CartProvider from './services/context/CartContext'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import Category from './components/ItemCategory/Category';
+import ProductAdd from './components/Login/ProductAdd';
 
 function App() {
 
@@ -24,6 +25,9 @@ function App() {
           </Route>
           <Route path='/products/:category?'>
             <Category />
+          </Route>
+          <Route path="/admin">
+              <ProductAdd/>
           </Route>
         </Switch>
         <Footer />

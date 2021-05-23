@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavDropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { HashLink as Link } from 'react-router-hash-link';
 import CartWidget from '../CartWidget/CartWidget';
 import './Nav.scss'
 
@@ -32,7 +32,7 @@ const Nav = () => {
                             <ul className="navbar-nav mr-auto">
 
                                 <li>
-                                    <a className="nav-link" href="#featured">TENDENCIAS</a>
+                                    <Link className="nav-link" to="/#featured">DESTACADOS</Link>
                                 </li>
                                 <NavDropdown title="PRODUCTOS" id="nav-dropdown">
                                     <NavDropdown.Item eventKey="4.1"><Link to="/products/celulares">Celulares</Link></NavDropdown.Item>

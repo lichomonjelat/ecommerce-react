@@ -24,14 +24,16 @@ export default function CartProvider({ children }) {
     }
     function addToCart(data) {
         if (isInCart(data.id)) {
+            let copiaCarrito = [...cart]
             var prodIndex = cart.findIndex((obj => obj.id == data.id));
-            const updated  = cart[prodIndex].item.count + data.items.count
-            setCart([...cart, updated])
-        }
-        else {
+            copiaCarrito[prodIndex].item.count = copiaCarrito[prodIndex].item.count + data.item.count
+            console.log(copiaCarrito);
+            setCart(copiaCarrito)
+        } else {
             setCart([...cart, data])
         }
     }
+    
     function removeItem(id) {
         const newToCart = cart.filter((item) => item.id !== id)
         setCart(newToCart)

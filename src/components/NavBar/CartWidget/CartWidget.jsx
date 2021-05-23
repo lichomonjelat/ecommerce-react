@@ -10,13 +10,18 @@ function CartWidget() {
 
     const { cart } = useContext(CartContext)
 
+    const [qty, setQty] = useState(0)
+
     useEffect(() => {
-       
-    }, []);
+        let cantidad = cart.reduce(function(total, currentValue){
+            return total + currentValue.item.count
+        }, 0);
+        setQty(cantidad)
+    }, [cart]);
     return (
         <>
-            <div className="cart" onClick={() => setShowCart(true)}>
-                <span>{cart.qty}</span>
+            <div className="cart" onClick={() => setShowCart(!showCart)}>
+                <span>{qty}</span>
                 <ShoppingCartIcon />
             </div>
             <Cart show={showCart} onClose={() => setShowCart(false)} />

@@ -9,7 +9,7 @@ export function getProducts() {
         })
 };
 export function getFeatured() {
-    return postCollection.where("featured", "==", true).get()
+    return postCollection.where("featured", "==", "true").get()
         .then(snapshot => {
             return snapshot.docs.map(doc => ({...doc.data(), id: doc.id }))
         })

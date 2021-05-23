@@ -29,31 +29,6 @@
     margin: auto;
 }
 
-.middle {
-    transition: .5s ease;
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    text-align: center;
-    a {
-        font-family: poppins;
-        display: flex;
-        align-items: center;
-        height: 30px;
-        background-color: #D8EBEF;
-        color: black;
-        font-size: 16px;
-        padding: 16px 32px;
-        border-radius: 15px;
-        outline: none;
-        border: 0;
-        cursor: pointer;
-    }
-}
-
 .new {
     display: flex;
     justify-content: center;
