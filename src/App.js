@@ -9,6 +9,7 @@ import CartProvider from './services/context/CartContext'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import Category from './components/ItemCategory/Category';
 import ProductAdd from './components/Login/ProductAdd';
+import Cartview from './components/Cart/Cartview';
 
 function App() {
 
@@ -28,6 +29,12 @@ function App() {
           </Route>
           <Route path="/admin">
               <ProductAdd/>
+          </Route>
+          <Route path="/cart">
+              <Cartview/>
+          </Route>
+          <Route path="/checkout">
+        
           </Route>
         </Switch>
         <Footer />

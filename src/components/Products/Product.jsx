@@ -40,17 +40,7 @@ function Product(props) {
                     <h5>${props.product_price}</h5>
                 </div>
             </div>
-            {/*<div className="actions">
-
-                <div className="see-more">
-                    <IconButton color="primary" aria-label="add to shopping cart">
-                        <AddShoppingCartIcon />
-                    </IconButton>
-                    <div className="counter">
-                        <Counter />
-                    </div>
-                </div>
-                </div>*/}
+            
         </div>
     )
 }

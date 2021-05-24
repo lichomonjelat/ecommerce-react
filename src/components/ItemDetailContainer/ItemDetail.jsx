@@ -2,14 +2,21 @@ import React, { useContext, useState, useEffect } from 'react';
 import './ItemDetail.scss'
 import { CartContext } from '../../services/context/CartContext'
 import Counter from '../Products/Counter'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+
 
 const ItemDetail = ({ data }) => {
 
+    const history = useHistory()
+
+    function toDetail(){
+        history.push(`/cart`)
+    }
 
     const { addToCart } = useContext(CartContext)
 
     const onAdd = (count) => {
+        toDetail();
         addToCart({
             id: data.id,
             item: {
