@@ -21,7 +21,7 @@ const ItemDetailContainer = (props) => {
         )
     }, []);
    
-
+    
     return (
         <ItemDetail
             data={data}

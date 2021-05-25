@@ -15,12 +15,18 @@ export function getFeatured() {
         })
 }
 export function getCategory(category) {
-    return postCollection.where("category", "==", category).get()
-        .then(snapshot => {
-            return snapshot.docs.map(doc => ({...doc.data(), id: doc.id }))
-        })
+    if (category == "all") {
+        return postCollection.get()
+            .then(snapshot => {
+                return snapshot.docs.map(doc => ({...doc.data(), id: doc.id }))
+            })
+    } else {
+        return postCollection.where("category", "==", category).get()
+            .then(snapshot => {
+                return snapshot.docs.map(doc => ({...doc.data(), id: doc.id }))
+            })
+    }
 }
-
 export function getDetail(id) {
     return postCollection.doc(id).get()
         .then(snapshot => {

@@ -1,10 +1,17 @@
 import React, { useContext, useEffect } from 'react'
 import './CartWidget.scss'
 import { CartContext } from '../../../services/context/CartContext'
+import { useHistory } from 'react-router'
 function Cart(props) {
 
     const { cart, removeItem, emptyCart } = useContext(CartContext)
 
+    const history = useHistory()
+
+    function endOrder(){
+        history.push('/cart');
+        props.onClose()
+    }
     useEffect(() => {
         cart.map(function (cart) {
             console.log(cart.item.count)
@@ -32,7 +39,7 @@ function Cart(props) {
                         }
                         <div className="d-flex flex-column mt-5">
                             <button className="btn btn-outline-danger m-2" onClick={emptyCart}>Vaciar carrito</button>
-                            <button className="btn btn-outline-success m-2">Terminar compra</button>
+                            <button className="btn btn-outline-success m-2" onClick={endOrder}>Terminar compra</button>
                         </div>
                     </div> :
                     <div className="w-100 h-100 d-flex justify-items-center align-items-center">

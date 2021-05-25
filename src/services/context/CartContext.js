@@ -34,6 +34,19 @@ export default function CartProvider({ children }) {
         }
     }
     
+    function updateCart(data) {
+        if (isInCart(data.id)) {
+            let copiaCarrito = [...cart]
+            var prodIndex = cart.findIndex((obj => obj.id == data.id));
+            copiaCarrito[prodIndex].item.count = copiaCarrito[prodIndex].item.count = data.item.count
+            console.log(copiaCarrito);
+            setCart(copiaCarrito)
+        } else {
+            setCart([...cart, data])
+        }
+    }
+    
+    
     function removeItem(id) {
         const newToCart = cart.filter((item) => item.id !== id)
         setCart(newToCart)
@@ -43,7 +56,7 @@ export default function CartProvider({ children }) {
     }
 
     return (
-        <CartContext.Provider value={{ cart, setCart, addToCart, removeItem, emptyCart }}>
+        <CartContext.Provider value={{ cart, setCart, addToCart, removeItem, emptyCart, updateCart }}>
             {children}
         </CartContext.Provider>
     )

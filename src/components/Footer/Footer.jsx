@@ -15,7 +15,7 @@ function Footer() {
                 </div>
                 <div className="d-flex flex-column justify-content-center">
                     <h5>2021, FlipperGadgets</h5>
-                    <h5>Buenos Aires, 2235, Rosario, Argentina</h5>
+                    <h5>Italia 1241, Rosario, Argentina</h5>
                 </div>
             </div>
         </footer>

@@ -38,6 +38,7 @@ const Nav = () => {
                                     <NavDropdown.Item eventKey="4.1"><Link to="/products/celulares">Celulares</Link></NavDropdown.Item>
                                     <NavDropdown.Item eventKey="4.2"><Link to="/products/tablet">Tablets</Link></NavDropdown.Item>
                                     <NavDropdown.Item eventKey="4.3"><Link to="/products/camaras">Camaras</Link></NavDropdown.Item>
+                                    <NavDropdown.Item eventKey="4.3"><Link to="/products/all">Ver todo</Link></NavDropdown.Item>
                                 </NavDropdown>
                                 <li>
                                     <CartWidget />
