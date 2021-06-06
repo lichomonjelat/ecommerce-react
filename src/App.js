@@ -10,6 +10,7 @@ import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import Category from './components/ItemCategory/Category';
 import ProductAdd from './components/Login/ProductAdd';
 import Cartview from './components/Cart/Cartview';
+import Checkout from './pages/checkout/Checkout';
 
 function App() {
 
@@ -34,7 +35,7 @@ function App() {
               <Cartview/>
           </Route>
           <Route path="/checkout">
-        
+            <Checkout/>
           </Route>
         </Switch>
         <Footer />
