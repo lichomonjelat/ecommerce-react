@@ -1,7 +1,11 @@
 .prod-container {
+    box-sizing: border-box;
+    margin: 2rem auto 2rem auto;
     display: flex;
     flex-direction: row;
     height: 100vh;
+    box-shadow: 0px 0px 9px 0px rgb(0, 0, 0, 0.5);
+    border-radius: 5px;
 }
 
 .product-image {
@@ -12,5 +16,15 @@
         display: block;
         width: 50%;
         height: auto;
+    }
+}
+.actions{
+    h2,h4{
+        text-align: left;
+        font-family: montserrat;
+        font-size: 25px;
+        padding: .3rem;
+    } h2{
+        font-weight: bold;
     }
 }

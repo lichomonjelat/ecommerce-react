@@ -2,21 +2,24 @@ import React, { useContext, useState, useEffect } from 'react';
 import './ItemDetail.scss'
 import { CartContext } from '../../services/context/CartContext'
 import Counter from '../Products/Counter'
-import { Link, useHistory } from 'react-router-dom';
-
+import { useHistory } from 'react-router-dom';
+import swal from 'sweetalert'
 
 const ItemDetail = ({ data }) => {
 
     const history = useHistory()
 
-    function toDetail(){
+    const [added, setAdded] = useState(false)
+
+    function toDetail() {
         history.push(`/cart`)
     }
 
     const { addToCart } = useContext(CartContext)
 
     const onAdd = (count) => {
-        toDetail();
+        setAdded(true);
+        swal("Su producto ha sido añadido al carrito", "", "success");
         addToCart({
             id: data.id,
             item: {
@@ -25,9 +28,14 @@ const ItemDetail = ({ data }) => {
             }
         })
     }
-
+    useEffect(() => {
+        return () => {
+            setAdded(false)
+        }
+    }, [])
     return (
-        <div key={data.id} className="prod-container">
+
+        <div key={data.id} className="prod-container container">
             <div className="product-image">
                 <img src={data.product_photo} />
             </div>
@@ -42,10 +50,10 @@ const ItemDetail = ({ data }) => {
                     <h4>${data.product_price}</h4>
                 </div>
                 <div className="buy">
-                    <Counter onAdd={onAdd} stock={6} />
+                    <Counter add={added} onAdd={onAdd} stock={6} />
                 </div>
-
             </div>
+            
         </div>
     );
 }

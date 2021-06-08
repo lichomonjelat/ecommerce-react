@@ -4,13 +4,11 @@ import { useForm } from 'react-hook-form'
 import './Checkout.scss'
 import db from '../../db'
 import { CartContext } from '../../services/context/CartContext'
+import swal from 'sweetalert'
 
 export default function Checkout() {
-    const { cart } = useContext(CartContext)
+    const { cart, emptyCart } = useContext(CartContext)
 
-    const [id, setID] = useState()
-    const [customer, setCustomer] = useState()
-    const [orderEnd, setOrderEnd] = useState(false)
     const { register, handleSubmit } = useForm();
 
     const [qty, setQty] = useState(0)
@@ -23,111 +21,60 @@ export default function Checkout() {
         }, 0);
         setQty(cantidad);
 
-        let total = cart.reduce(function(total,currentValue){
-            return total + (currentValue.item.data.product_price*currentValue.item.count)
+        let total = cart.reduce(function (total, currentValue) {
+            return total + (currentValue.item.data.product_price * currentValue.item.count)
         }, 0);
         setTotal(total);
     }, [cart]);
 
     function onSubmit(data) {
-        setCustomer(data.name);
-        setOrderEnd(true);
+        emptyCart();
         db.collection("orders").add({
-            order:{
-                buyer:{
-                    email:data.email,
-                    name:data.name,
-                    lastname:data.lastname,
-                    phone:data.phone
+            order: {
+                buyer: {
+                    email: data.email,
+                    name: data.name,
+                    lastname: data.lastname,
+                    phone: data.phone
                 },
-                items:{cart},
-                total:{
+                items: { cart },
+                total: {
                     total
                 }
             }
         }).then(function (docRef) {
-            setID(docRef.id)
+            swal("Gracias " + data.name, "Su numero de orden es " + docRef.id, "success");
         })
             .catch(function (error) {
-                console.error("Error adding document: ", error);
+                swal("Ocurrio un error", error, "error")
             });
-        console.log(cart)
+
 
     }
     return (
         <div className="form-container">
             <h1 className="text-center">Checkout</h1>
-            {
-                orderEnd ?
-                    <div>
-                        <h2>{customer}</h2>
-                        <h3>Su orden ha sido creada con exito! Su numero de orden es:</h3>
-                        <h3>{id}</h3>
-                        <h3>Gracias por confiar en Flipper Gadgets!</h3>
-                    </div> :
-                    <form onSubmit={handleSubmit(onSubmit)}>
-                        <div className="container mt-5 ">
-                            <FormControl fullWidth variant="outlined">
-                                <TextField
-                                    {...register("name")}
-                                    id="outlined-full-width"
-                                    label="Nombre"
-                                    style={{ margin: 8 }}
-                                    placeholder="Ingrese su nombre"
-                                    margin="normal"
-                                    InputLabelProps={{
-                                        shrink: true,
-                                    }}
-                                    variant="outlined"
-                                />
-                            </FormControl>
-                            <FormControl fullWidth variant="outlined">
-                                <TextField
-                                    {...register("lastname")}
-                                    id="outlined-full-width"
-                                    label="Apellido"
-                                    style={{ margin: 8 }}
-                                    placeholder="Ingrese su apellido"
-
-                                    margin="normal"
-                                    InputLabelProps={{
-                                        shrink: true,
-                                    }}
-                                    variant="outlined"
-                                />
-                            </FormControl>
-                            <FormControl fullWidth variant="outlined">
-                                <TextField
-                                    {...register("email")}
-                                    id="outlined-full-width"
-                                    label="Email"
-                                    style={{ margin: 8 }}
-                                    placeholder="Ingrese su email"
-                                    margin="normal"
-                                    InputLabelProps={{
-                                        shrink: true,
-                                    }}
-                                    variant="outlined"
-                                />
-                            </FormControl>
-                            <FormControl fullWidth variant="outlined">
-                                <TextField
-                                    {...register("phone")}
-                                    id="outlined-full-width"
-                                    label="Telefono"
-                                    style={{ margin: 8 }}
-                                    placeholder="Ingrese su telefono"
-                                    margin="normal"
-                                    InputLabelProps={{
-                                        shrink: true,
-                                    }}
-                                    variant="outlined"
-                                />
-                            </FormControl>
-                            <button className="btn btn-success mx-auto">Terminar compra</button>
-                        </div>
-                    </form>
-            }
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="container d-flex flex-column justify-items-center align-content-center">
+                    <div className="d-flex flex-row justify-content-center align-content-center mt-5">
+                        <label htmlFor="">Nombre</label>
+                        <input {...register("name")} type="text" />
+                    </div>
+                    <div className="d-flex flex-row justify-content-center align-content-center mt-5">
+                        <label htmlFor="">Apellido</label>
+                        <input {...register("lastname")} type="text" />
+                    </div>
+                    <div className="d-flex flex-row justify-content-center align-content-center mt-5" >
+                        <label htmlFor="">Telefono</label>
+                        <input {...register("phone")} type="text" />
+                    </div>
+                    <div className="d-flex flex-row justify-content-center align-content-center mt-5">
+                        <label htmlFor="">Email</label>
+                        <input {...register("email")} type="email" />
+                    </div>
+                    <button disabled={cart.length < 1 ? "disabled" : ""} className="btn btn-success mx-auto">Terminar compra</button>
+                </div>
+            </form>
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext} from 'react'
 import './CartWidget.scss'
 import { CartContext } from '../../../services/context/CartContext'
 import { useHistory } from 'react-router'
@@ -8,20 +8,16 @@ function Cart(props) {
 
     const history = useHistory()
 
-    function endOrder(){
+    function endOrder() {
         history.push('/cart');
         props.onClose()
     }
-    useEffect(() => {
-        cart.map(function (cart) {
-            console.log(cart.item.count)
-        })
-
-    }, [cart]);
-
-    return (
+     return (
         <div className={`cart-side ${props.show ? "cart-show" : ""}`}>
-            <span onClick={props.onClose}>X</span>
+            <span onClick={props.onClose}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><defs>
+                </defs><g transform="translate(-305 -17)"><rect className="a" width="16" height="16" transform="translate(305 17)" /><path class="b" d="M7.778,9.192,1.414,15.557,0,14.142,6.364,7.778,0,1.414,1.414,0,7.778,6.364,14.142,0l1.415,1.414L9.192,7.778l6.364,6.364-1.415,1.415Z" transform="translate(305 17)" /></g></svg>
+            </span>
             {
                 cart.length ?
                     <div>

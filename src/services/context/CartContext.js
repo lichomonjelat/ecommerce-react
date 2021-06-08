@@ -9,7 +9,7 @@ export default function CartProvider({ children }) {
     const [cart, setCart] = useState([])
 
     useEffect(() => {
-        console.log(cart)
+
     }, [cart]);
     function isInCart(id) {
         //Chequear si el producto esta en el carro
@@ -27,7 +27,7 @@ export default function CartProvider({ children }) {
             let copiaCarrito = [...cart]
             var prodIndex = cart.findIndex((obj => obj.id == data.id));
             copiaCarrito[prodIndex].item.count = copiaCarrito[prodIndex].item.count + data.item.count
-            console.log(copiaCarrito);
+
             setCart(copiaCarrito)
         } else {
             setCart([...cart, data])
@@ -39,7 +39,7 @@ export default function CartProvider({ children }) {
             let copiaCarrito = [...cart]
             var prodIndex = cart.findIndex((obj => obj.id == data.id));
             copiaCarrito[prodIndex].item.count = copiaCarrito[prodIndex].item.count = data.item.count
-            console.log(copiaCarrito);
+
             setCart(copiaCarrito)
         } else {
             setCart([...cart, data])

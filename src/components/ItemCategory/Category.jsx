@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import Product from '../Products/Product';
 import { getCategory, getProducts } from '../../services/products'
-import { CloudSharp } from '@material-ui/icons';
-
+import './Category.scss'
 const Category = () => {
 
     let { category } = useParams()
@@ -20,9 +19,11 @@ const Category = () => {
     return (
 
         <div>
+            <h1 className="text-center text-uppercase m-3">{category}</h1>
             {
                 data.length ?
                     <div className="product-container">
+                        
                         {
 
                             data.map((item) => (

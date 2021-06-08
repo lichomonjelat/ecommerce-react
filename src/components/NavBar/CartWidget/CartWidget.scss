@@ -19,7 +19,8 @@
         align-items: center;
     }
 }
-
+.a{fill:none;}
+.b{fill:#2a3037;}
 .cart-side {
     z-index: 10;
     display: none;
@@ -34,6 +35,10 @@
     h3,
     span {
         font-family: cerealLight;
+    }
+    svg{
+        margin: 1rem;
+        cursor: pointer;
     }
 }
 

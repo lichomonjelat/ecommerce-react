@@ -1,16 +1,19 @@
 .counter {
     button {
-        width: 25px;
-        height: 25px;
-        border-radius: 100%;
+        width: 20px;
+        height: 20px;
         border: none;
+        border: 1px solid lightgray;
         outline: none;
         cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     input {
         text-align: center;
         width: 100px;
         height: 20px;
-        border-radius: 5px;
+        border-radius: 0px;
     }
 }

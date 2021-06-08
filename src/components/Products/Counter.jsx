@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 import './counter.scss'
 
 function Counter(props) {
     const [count, setCount] = useState(1)
 
-    
+    function toCart() {
+        history.push('/cart')
+    }
+    const history = useHistory()
+
     const onResta = () => {
         if (count > 1) {
             setCount(count - 1);
@@ -28,7 +33,13 @@ function Counter(props) {
                     disabled={count > props.stock ? "disabled" : ""}
                 >+</button>
             </div>
-            <button className="btn btn-info" onClick={()=> props.onAdd(count)}>Comprar</button>
+            <div>
+                {
+                    props.add ?
+                        <button className="btn btn-info btn-lg btn-block mt-3" onClick={toCart} >Terminar compra</button> :
+                        <button className="btn btn-info btn-lg btn-block mt-3" onClick={() => props.onAdd(count)}>Comprar</button>
+                }
+            </div>
         </>
     )
 }

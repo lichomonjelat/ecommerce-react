@@ -8,7 +8,7 @@ import { useHistory } from 'react-router';
 
 const Cartview = () => {
 
-    const { cart, removeItem, emptyCart, addToCart, updateCart } = useContext(CartContext)
+    const { cart, updateCart } = useContext(CartContext)
 
     const [qty, setQty] = useState(0)
 
@@ -93,14 +93,14 @@ const Cartview = () => {
                         <button className="btn btn-outline-info m-4" onClick={() => { history.push('/') }}>Seguir comprando</button>
                     </div>
                     <div className="col-4 p-3 order-summary">
-                        <div className="container h-100">
+                        <div className="container h-100 d-flex justify-content-center flex-column">
                             <h3>Tu pedido</h3>
                             <div className="order-info">
                                     <h3>{qty} Items</h3>
 
                                     <h4>${total}</h4>
                             </div>
-                            <button className="btn btn-outline-info" onClick={()=>{history.push('/checkout')}}>Terminar compra</button>
+                            <button className="mx-auto mt-5 btn btn-outline-info" onClick={()=>{history.push('/checkout')}}>Terminar compra</button>
                         </div>
 
                        
